@@ -2,100 +2,90 @@
   <v-app light>
     <v-navigation-drawer
       fixed
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      v-model="drawer"
+      clipped
       app
+      v-model="drawer"
     >
-      <v-list>
-        <v-list-tile
-          value="true"
-          v-for="(item, i) in items"
-          :key="i"
-          exact
-        >
-          <v-list-tile-action>
-            <v-icon light v-html="item.icon"></v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title v-text="item.title"></v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+      <v-list dense>
+          <v-list-tile>
+            <v-list-tile-action>
+                <v-icon>translate</v-icon>
+              </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>
+                Hiragana
+              </v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-action>
+                <v-icon>translate</v-icon>
+              </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>
+                Katakana
+              </v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-divider></v-divider>
+          <v-list-tile>
+            <v-list-tile-action>
+                <v-icon>date_range</v-icon>
+              </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>
+                Dates
+              </v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-action>
+                <v-icon>access_time</v-icon>
+              </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>
+                Times
+              </v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar fixed app :clipped-left="clipped">
-      <v-toolbar-side-icon @click.stop="drawer = !drawer" light></v-toolbar-side-icon>
-      <v-btn
-        icon
-        light
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        light
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>web</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        light
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>remove</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title"></v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        icon
-        light
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>menu</v-icon>
-      </v-btn>
-    </v-toolbar>
-    <v-content>
-      <router-view></router-view>
-    </v-content>
-    <v-navigation-drawer
-      temporary
-      :right="right"
-      v-model="rightDrawer"
+    <v-toolbar
+      color="blue darken-3"
+      dark
+      app
+      clipped-left
       fixed
     >
-      <v-list>
-        <v-list-tile @click="right = !right">
-          <v-list-tile-action>
-            <v-icon light>compare_arrows</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer :fixed="fixed" app>
-      <span>&copy; 2017</span>
-    </v-footer>
+      <v-toolbar-title  >
+        <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+        <v-btn icon>
+          <v-icon>home</v-icon>
+        </v-btn>
+        <span class="hidden-xs-only">Triber japanese games</span>
+      </v-toolbar-title>
+      <div class="d-flex align-center" style="margin-left: auto">
+        <v-btn icon>
+          <v-icon>settings</v-icon>
+        </v-btn>
+        <v-btn icon large>
+          <v-avatar size="32px" class="teal">
+            <span class="white--text headline">U</span>
+          </v-avatar>
+        </v-btn>
+      </div>
+    </v-toolbar>
+    <v-content>
+      <v-container fluid fill-height>
+      </v-container>
+    </v-content>
   </v-app>
 </template>
 
 <script>
   export default {
-    data () {
-      return {
-        clipped: false,
-        drawer: true,
-        fixed: false,
-        items: [{
-          icon: 'bubble_chart',
-          title: 'Inspire'
-        }],
-        miniVariant: false,
-        right: true,
-        rightDrawer: false,
-        title: 'Vuetify.js'
-      }
-    }
+    data: () => ({
+      drawer: null
+    })
   }
 </script>
