@@ -21,3 +21,5 @@
     }
   }
 </script>
+
+<style src="../node_modules/mdi/css/materialdesignicons.css"></style>
