@@ -14,9 +14,7 @@ const mutations = {
 }
 
 const getters = {
-  showSideMenu: (state) => {
-    return state.showSideMenu
-  }
+  showSideMenu: state => state.showSideMenu
 }
 
 export default {

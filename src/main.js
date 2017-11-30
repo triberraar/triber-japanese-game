@@ -7,9 +7,13 @@ import 'vuetify/dist/vuetify.css'
 import App from './App'
 import router from './router'
 import store from './store'
+import { SET_USER } from '@/store/Auth/constants'
+import { firebaseApp } from '@/config/firebase'
 
 Vue.use(Vuetify)
 Vue.config.productionTip = false
+
+firebaseApp.auth().onAuthStateChanged(user => store.commit(SET_USER, user))
 
 /* eslint-disable no-new */
 new Vue({

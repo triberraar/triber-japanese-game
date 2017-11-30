@@ -1,6 +1,10 @@
 <template lang="pug">
-  v-app(light)
-    router-view
+  span
+    SideMenu
+    TopMenu
+    v-content
+      v-container(fluid fill-height)
+        router-view
 </template>
 
 <script>
@@ -8,10 +12,8 @@
   import TopMenu from '@/components/Layout/TopMenu'
 
   export default {
-    name: 'triber-japanese-games',
-    data: () => ({
-      drawer: null
-    }),
+    name: 'layout',
+    data: () => ({ }),
     components: {
       SideMenu,
       TopMenu
@@ -19,4 +21,3 @@
   }
 </script>
 
-<style src="../node_modules/mdi/css/materialdesignicons.css"></style>

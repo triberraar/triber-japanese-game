@@ -8,9 +8,12 @@
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
     "build": "node build/build.js",
-    "lint": "eslint --ext .js,.vue src"
+    "lint": "eslint --ext .js,.vue src",
+    "lint:fix": "eslint --fix --ext .js,.vue src"
   },
   "dependencies": {
+    "firebase": "^4.6.2",
+    "firebaseui": "^2.5.1",
     "mdi": "^2.0.46",
     "pug": "^2.0.0-rc.4",
     "vue": "^2.3.3",
