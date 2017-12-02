@@ -1,12 +1,13 @@
 <template lang="pug">
-  v-layout(row wrap)
-    v-flex(offset-lg1 lg10 sm12)
-      v-layout(row wrap)
-        GameCard(v-for="game in games" 
-          :key="game.title" 
-          :title="game.title" 
-          :subTitle="game.subTitle"
-          :description="game.description")
+  v-container(fluid grid-list-md)
+    v-layout(row wrap)
+      v-flex(offset-lg1 lg10 sm12)
+        v-layout(row wrap)
+          GameCard(v-for="game in games" 
+            :key="game.title" 
+            :title="game.title" 
+            :subTitle="game.subTitle"
+            :description="game.description")
 </template>
 
 <script>

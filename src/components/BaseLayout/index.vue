@@ -2,8 +2,7 @@
   span
     TopMenu
     v-content
-      v-container(fluid grid-list-md)
-        router-view
+      router-view
 </template>
 
 <script>

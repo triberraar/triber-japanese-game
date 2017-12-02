@@ -15,7 +15,6 @@ Vue.use(Vuetify)
 Vue.config.productionTip = false
 
 firebaseApp.auth().onAuthStateChanged(user => {
-  debugger
   if (user) {
     store.commit(SET_USER, {
       userName: user.displayName,

@@ -1,5 +1,14 @@
 <template lang="pug">
-  div(id="firebaseui-auth-container")
+  div
+    v-dialog(:value="true", persistent width="290")
+      v-card(hover style="background:white")
+        v-toolbar
+          v-toolbar-title Login
+        v-card-title
+          div.grey--text Welcome to triber-japanese-game.
+          div.grey--text Please login/register using one of the methods
+          div(id="firebaseui-auth-container")
+</template>
 </template>
 
 <script>
