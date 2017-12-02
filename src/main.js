@@ -6,6 +6,7 @@ import 'vuetify/dist/vuetify.css'
 
 import App from './App'
 import router from './router'
+import { HOME, LOGIN } from './router/constants'
 import store from './store'
 import { SET_USER } from '@/store/Auth/constants'
 import { firebaseApp } from '@/config/firebase'
@@ -13,7 +14,17 @@ import { firebaseApp } from '@/config/firebase'
 Vue.use(Vuetify)
 Vue.config.productionTip = false
 
-firebaseApp.auth().onAuthStateChanged(user => store.commit(SET_USER, user))
+firebaseApp.auth().onAuthStateChanged(user => {
+  store.commit(SET_USER, {
+    userName: user.displayName,
+    email: user.email,
+    photoUrl: user.photoUrl,
+    id: user.uid
+  })
+  if (router.currentRoute.name === LOGIN && store.getters['authenticated']) {
+    router.push({ name: HOME })
+  }
+})
 
 /* eslint-disable no-new */
 new Vue({

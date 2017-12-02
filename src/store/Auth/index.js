@@ -11,12 +11,13 @@ const mutations = {
 }
 
 const getters = {
-  user: state => state.user
+  user: state => state.user,
+  authenticated: state => state.user !== null
 }
 
 export default {
   state: initial,
   mutations,
   getters,
-  strict: false
+  strict: true
 }
