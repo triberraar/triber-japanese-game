@@ -1,8 +1,7 @@
 <template lang="pug">
-  span
+  v-content()
     TopMenu
-    v-content
-      router-view
+    router-view
 </template>
 
 <script>

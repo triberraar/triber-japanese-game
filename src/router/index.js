@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import BaseLayout from '@/components/BaseLayout'
 import LoginPage from '@/pages/Login'
 import HomePage from '@/pages/Home'
-import BaseLayout from '@/components/BaseLayout'
-import { LOGIN, HOME } from './constants'
+import SettingsPage from '@/pages/Settings'
+import { LOGIN, HOME, SETTINGS } from './constants'
 
 import store from '@/store/index'
 
@@ -20,9 +21,16 @@ const router = new Router({
       component: BaseLayout,
       children: [
         {
-          path: '/',
+          path: 'home',
           name: HOME,
           component: HomePage,
+          meta: {
+            requiresAuth: true
+          }
+        }, {
+          path: 'settings',
+          name: SETTINGS,
+          component: SettingsPage,
           meta: {
             requiresAuth: true
           }

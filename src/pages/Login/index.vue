@@ -17,7 +17,7 @@ import firebase from 'firebase'
 import { firebaseUI } from '@/config/firebase'
 
 const uiConfig = {
-  signInSuccessUrl: '/#/',
+  signInSuccessUrl: '/#/home',
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     firebase.auth.GithubAuthProvider.PROVIDER_ID,

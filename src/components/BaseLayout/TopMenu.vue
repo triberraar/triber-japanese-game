@@ -1,11 +1,11 @@
 <template lang="pug">
   v-toolbar(color="blue darken-3" dark app clipped-left fixed)
     v-toolbar-title
-      v-btn(icon)
+      v-btn(icon :to="routes.home")
         v-icon home
       span Triber japanese games
     div.d-flex.align-center(style="margin-left: auto")
-      v-btn(icon)
+      v-btn(icon :to="routes.settings")
         v-icon settings
       v-menu(offset-y)
         v-btn(icon slot="activator")
@@ -19,12 +19,21 @@
 
 <script>
   import { firebaseApp } from '@/config/firebase'
+  import { HOME, SETTINGS } from '@/router/constants'
 
   import { mapGetters } from 'vuex'
 
   export default {
     name: 'TopMenu',
     data: () => ({
+      routes: {
+        home: {
+          name: HOME
+        },
+        settings: {
+          name: SETTINGS
+        }
+      }
     }),
     computed: {
       ...mapGetters({
