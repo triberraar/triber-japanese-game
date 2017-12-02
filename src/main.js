@@ -15,14 +15,22 @@ Vue.use(Vuetify)
 Vue.config.productionTip = false
 
 firebaseApp.auth().onAuthStateChanged(user => {
-  store.commit(SET_USER, {
-    userName: user.displayName,
-    email: user.email,
-    photoUrl: user.photoUrl,
-    id: user.uid
-  })
+  debugger
+  if (user) {
+    store.commit(SET_USER, {
+      userName: user.displayName,
+      email: user.email,
+      photoURL: user.photoURL,
+      id: user.uid
+    })
+  } else {
+    store.commit(SET_USER, null)
+  }
   if (router.currentRoute.name === LOGIN && store.getters['authenticated']) {
     router.push({ name: HOME })
+  }
+  if (router.currentRoute.meta.requiresAuth && !store.getters['authenticated']) {
+    router.push({ name: LOGIN })
   }
 })
 
