@@ -17,7 +17,7 @@ const uiConfig = {
 }
 
 export default {
-  name: 'login',
+  name: 'LoginPage',
   data: () => ({ }),
   computed: {
   },

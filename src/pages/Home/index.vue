@@ -12,7 +12,7 @@
 <script>
 import GameCard from './components/GameCard'
 export default {
-  name: 'home',
+  name: 'HomePage',
   data: () => ({
     games: [
       {

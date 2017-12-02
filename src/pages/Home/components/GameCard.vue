@@ -6,6 +6,7 @@
           div.headline {{title}}
           span.grey--text {{subTitle}}
       v-card-actions
+        v-btn(flat) Play
         v-spacer
         v-btn(icon @click="show = !show")
           v-icon {{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}
@@ -15,7 +16,7 @@
 
 <script>
 export default {
-  name: 'gameCard',
+  name: 'GameCard',
   props: {
     title: {
       type: String,

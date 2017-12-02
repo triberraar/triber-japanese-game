@@ -7,10 +7,10 @@
 </template>
 
 <script>
-  import TopMenu from '@/components/Layout/TopMenu'
+  import TopMenu from './TopMenu'
 
   export default {
-    name: 'layout',
+    name: 'BaseLayout',
     data: () => ({ }),
     components: {
       TopMenu

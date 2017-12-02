@@ -14,7 +14,7 @@
 
 <script>
   export default {
-    name: 'topMenu',
+    name: 'TopMenu',
     data: () => ({
     })
   }
