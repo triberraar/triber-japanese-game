@@ -1,6 +1,5 @@
 <template lang="pug">
   v-toolbar(color="blue darken-3" dark app clipped-left fixed)
-    v-toolbar-side-icon(@click="toggleSideMenu")
     v-toolbar-title
       v-btn(icon)
         v-icon home
@@ -14,17 +13,9 @@
 </template>
 
 <script>
-  import { mapMutations } from 'vuex'
-
-  import { TOGGLE_SIDE_MENU } from '@/store/Layout/constants'
-
   export default {
+    name: 'topMenu',
     data: () => ({
-    }),
-    methods: {
-      ...mapMutations({
-        toggleSideMenu: TOGGLE_SIDE_MENU
-      })
-    }
+    })
   }
 </script>

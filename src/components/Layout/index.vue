@@ -1,21 +1,18 @@
 <template lang="pug">
   span
-    SideMenu
     TopMenu
     v-content
-      v-container(fluid fill-height)
+      v-container(fluid grid-list-md)
         router-view
 </template>
 
 <script>
-  import SideMenu from '@/components/Layout/SideMenu'
   import TopMenu from '@/components/Layout/TopMenu'
 
   export default {
     name: 'layout',
     data: () => ({ }),
     components: {
-      SideMenu,
       TopMenu
     }
   }
