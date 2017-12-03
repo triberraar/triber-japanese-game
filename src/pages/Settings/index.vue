@@ -1,4 +1,3 @@
-// should have settings for ja voice, ask for mic access
 <template lang="pug">
   v-container(fluid fill-height)
     v-layout
@@ -19,7 +18,7 @@
                 v-flex.pt-3(xs1)
                   v-btn(flat icon @click="preview" :disabled="!voice || speaking")
                     v-icon play_arrow
-              v-layout()
+              v-layout(row wrap)
                 v-flex.pt-3(xs12 md5 lg4 xl3)
                   v-subheader.pl-0 Speech Recognition:
                     v-chip(color="red" outline v-if="speechRecognitionEnabled===false || !speechRecognitionFeature") Disabled
