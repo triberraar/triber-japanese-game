@@ -48,11 +48,11 @@ export default {
   }),
   created: function () {
     const synthVoices = this.synth.getVoices()
-    this.voices = synthVoices.filter(it => it.lang === 'ja-JP')
+    this.voices = synthVoices.filter(it => it.lang === 'ja-JP' || it.lang === 'ja_JP')
     this.voiceNames = this.voices.map(it => { return it.name })
     this.synth.onvoiceschanged = () => {
       const synthVoices = this.synth.getVoices()
-      this.voices = synthVoices.filter(it => it.lang === 'ja-JP')
+      this.voices = synthVoices.filter(it => it.lang === 'ja-JP' || it.lang === 'ja_JP')
       this.voiceNames = this.voices.map(it => { return it.name })
     }
   },
@@ -82,11 +82,16 @@ export default {
     preview () {
       const message = new window.SpeechSynthesisUtterance()
       message.text = 'おはよう'
+      message.lang = 'ja'
       message.voice = this.voices.find(it => it.name === this.voice)
       message.rate = 0.5
       this.speaking = true
       message.onend = () => {
         this.speaking = false
+      }
+      message.onerror = (err) => {
+        console.log(err)
+        // TODO handle speech errors
       }
       this.synth.speak(message)
     },
