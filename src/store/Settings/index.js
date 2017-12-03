@@ -1,14 +1,18 @@
 import { SET_SETTINGS } from './constants'
 
-const initial = {
-  voice: null,
-  speechRecognitionEnabled: null
+const initial = () => {
+  const empty = {
+    voice: null,
+    speechRecognitionEnabled: null
+  }
+  return JSON.parse(localStorage.getItem('settings')) || empty
 }
 
 const mutations = {
   [SET_SETTINGS]: (state, { voice, speechRecognitionEnabled }) => {
     if (voice !== undefined) state.voice = voice
     if (speechRecognitionEnabled !== undefined) state.speechRecognitionEnabled = speechRecognitionEnabled
+    localStorage.setItem('settings', JSON.stringify(state))
   }
 }
 
