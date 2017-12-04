@@ -38,6 +38,7 @@
 import { mapGetters, mapMutations } from 'vuex'
 
 import { SET_SETTINGS } from '@/store/Settings/constants'
+import { POP } from '@/store/Snackbar/constants'
 
 export default {
   name: 'SettingsPage',
@@ -79,7 +80,8 @@ export default {
   },
   methods: {
     ...mapMutations({
-      setSettings: SET_SETTINGS
+      setSettings: SET_SETTINGS,
+      popSnackbar: POP
     }),
     preview () {
       const message = new window.SpeechSynthesisUtterance()
@@ -93,7 +95,7 @@ export default {
       }
       message.onerror = (err) => {
         console.log(err)
-        // TODO handle speech errors
+        this.popSnackbar({message: 'Speech failed', type: 'error'})
       }
       this.synth.speak(message)
     },
