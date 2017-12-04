@@ -37,7 +37,7 @@
 <script>
 import { mapGetters, mapMutations } from 'vuex'
 
-import { SET_SETTINGS } from '@/store/Settings/constants'
+import { SET_SETTINGS, SETTINGS } from '@/store/Settings/constants'
 import { POP } from '@/store/Snackbar/constants'
 
 export default {
@@ -60,11 +60,14 @@ export default {
       this.voiceNames = this.voices.map(it => { return it.name })
       this.setSettings({voiceSupported: this.voiceNames.length !== 0})
     }
-    this.setSettings({speechRecognitionSupported: !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)})
+    this.setSettings({
+      speechRecognitionSupported: !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia),
+      speechRecognitionEnabled: !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)
+    })
   },
   computed: {
     ...mapGetters({
-      settings: 'settings'
+      settings: SETTINGS
     }),
     voice: {
       get () {

@@ -1,4 +1,4 @@
-import { SET_SETTINGS } from './constants'
+import { SET_SETTINGS, SETTINGS, CONFIGURED } from './constants'
 
 const initial = () => {
   const empty = {
@@ -21,8 +21,8 @@ const mutations = {
 }
 
 const getters = {
-  settings: state => state,
-  configured: state => state.voice !== null && state.speechRecognitionEnabled !== null
+  [SETTINGS]: state => state,
+  [CONFIGURED]: state => state.voice !== null && state.speechRecognitionEnabled !== null
 }
 
 export default {

@@ -22,6 +22,7 @@
   import { HOME, SETTINGS } from '@/router/constants'
 
   import { mapGetters } from 'vuex'
+  import { USER } from '@/store/Auth/constants'
 
   export default {
     name: 'TopMenu',
@@ -37,7 +38,7 @@
     }),
     computed: {
       ...mapGetters({
-        user: 'user'
+        user: USER
       }),
       avatarText: function () {
         return this.user.userName.charAt(0)

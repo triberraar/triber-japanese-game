@@ -1,2 +1,5 @@
 export const POP = 'Pop'
 export const SWALLOW = 'Swallow'
+export const MESSAGE = 'message'
+export const TYPE = 'type'
+export const SHOWN = 'shown'

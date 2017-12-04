@@ -10,16 +10,16 @@
   import { mapGetters, mapMutations } from 'vuex'
 
   import TopMenu from './TopMenu'
-  import { SWALLOW } from '@/store/Snackbar/constants'
+  import { SWALLOW, MESSAGE, TYPE, SHOWN } from '@/store/Snackbar/constants'
 
   export default {
     name: 'BaseLayout',
     data: () => ({ }),
     computed: {
       ...mapGetters({
-        message: 'message',
-        type: 'type',
-        shown: 'shown'
+        message: MESSAGE,
+        type: TYPE,
+        shown: SHOWN
       }),
       showSnackbar: {
         get () {

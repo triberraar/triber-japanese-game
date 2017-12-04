@@ -1,4 +1,4 @@
-import { SET_USER } from './constants'
+import { SET_USER, USER, AUTHENTICATED } from './constants'
 
 const initial = {
   user: null
@@ -11,8 +11,8 @@ const mutations = {
 }
 
 const getters = {
-  user: state => state.user,
-  authenticated: state => state.user !== null
+  [USER]: state => state.user,
+  [AUTHENTICATED]: state => state.user !== null
 }
 
 export default {

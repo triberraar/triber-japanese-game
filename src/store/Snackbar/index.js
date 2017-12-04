@@ -1,4 +1,4 @@
-import { POP, SWALLOW } from './constants'
+import { POP, SWALLOW, MESSAGE, TYPE, SHOWN } from './constants'
 
 const initial = {
   message: null,
@@ -20,9 +20,9 @@ const mutations = {
 }
 
 const getters = {
-  message: state => state.message,
-  type: state => state.type,
-  shown: state => state.shown
+  [MESSAGE]: state => state.message,
+  [TYPE]: state => state.type,
+  [SHOWN]: state => state.shown
 }
 
 export default {
