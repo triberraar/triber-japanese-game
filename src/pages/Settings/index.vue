@@ -8,7 +8,7 @@
           v-divider
           v-card-text
             v-form(v-model="valid")
-              v-layout
+              v-layout(row wrap)
                 v-flex(xs10 md5 lg4 xl3)
                   v-select(
                     :items="voiceNames"
@@ -18,17 +18,19 @@
                 v-flex.pt-3(xs1)
                   v-btn(flat icon @click="preview" :disabled="!voice || speaking")
                     v-icon play_arrow
+                v-flex(xs12 md7 lg7 xl8)
+                  v-alert(outline color="error" icon="info" :value="settings.voiceSupported === false") You don't have any japanese voices installed. Please add a japanese TTS (Text-To-Speech) voice.
               v-layout(row wrap)
                 v-flex.pt-3(xs12 md5 lg4 xl3)
                   v-subheader.pl-0 Speech Recognition:
-                    v-chip(color="red" outline v-if="speechRecognitionEnabled===false || !speechRecognitionFeature") Disabled
+                    v-chip(color="red" outline v-if="speechRecognitionEnabled===false || !settings.speechRecognitionSupported") Disabled
                     v-chip(color="green" outline v-if="speechRecognitionEnabled===true") Enabled
-                    v-chip(color="blue" outline v-if="speechRecognitionEnabled===null && speechRecognitionFeature") Unknown
-                    v-btn(color="secondary" v-if="speechRecognitionEnabled===null && speechRecognitionFeature" @click="enableSpeechRecognition") Enable
-                v-flex(xs12 md7 lg8 xl9)
-                  v-alert(outline color="info" icon="info" :value="speechRecognitionEnabled===null && speechRecognitionFeature") Please give access to the microphone to use speech recognition.
-                  v-alert(outline color="error" icon="error" :value="speechRecognitionEnabled===false && speechRecognitionFeature") You denied access to the microphone, if you change your mind you will have to change the setting in the browser.
-                  v-alert(outline color="error" icon="error" :value="!speechRecognitionFeature") Your browser doesn't support the MediaRecorder API, please switch to a compatible browser.
+                    v-chip(color="blue" outline v-if="speechRecognitionEnabled===null && settings.speechRecognitionSupported") Unknown
+                    v-btn(color="secondary" v-if="speechRecognitionEnabled===null && settings.speechRecognitionSupported" @click="enableSpeechRecognition") Enable
+                v-flex(offset-md1 xs12 md7 lg7 xl8)
+                  v-alert(outline color="info" icon="info" :value="speechRecognitionEnabled===null && settings.speechRecognitionSupported") Please give access to the microphone to use speech recognition.
+                  v-alert(outline color="error" icon="error" :value="speechRecognitionEnabled===false && settings.speechRecognitionSupported") You denied access to the microphone, if you change your mind you will have to change the setting in the browser.
+                  v-alert(outline color="error" icon="error" :value="settings.speechRecognitionSupported === false") Your browser doesn't support the MediaRecorder API, please switch to a compatible browser.
 </template>
 
 
@@ -50,19 +52,19 @@ export default {
     const synthVoices = this.synth.getVoices()
     this.voices = synthVoices.filter(it => it.lang === 'ja-JP' || it.lang === 'ja_JP')
     this.voiceNames = this.voices.map(it => { return it.name })
+    this.setSettings({voiceSupported: this.voiceNames.length !== 0})
     this.synth.onvoiceschanged = () => {
       const synthVoices = this.synth.getVoices()
       this.voices = synthVoices.filter(it => it.lang === 'ja-JP' || it.lang === 'ja_JP')
       this.voiceNames = this.voices.map(it => { return it.name })
+      this.setSettings({voiceSupported: this.voiceNames.length !== 0})
     }
+    this.setSettings({speechRecognitionSupported: !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)})
   },
   computed: {
     ...mapGetters({
       settings: 'settings'
     }),
-    speechRecognitionFeature: function () {
-      return navigator.mediaDevices && navigator.mediaDevices.getUserMedia
-    },
     voice: {
       get () {
         return this.settings.voice
