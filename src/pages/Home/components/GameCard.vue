@@ -6,7 +6,7 @@
           div.headline {{title}}
           span.grey--text {{subTitle}}
       v-card-actions
-        v-btn(flat color="orange") Play
+        v-btn(flat color="orange" @click="play") Play
         v-spacer
         v-btn(icon @click="show = !show")
           v-icon {{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}
@@ -15,6 +15,11 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex'
+
+import { CONFIGURED } from '@/store/Settings/constants'
+import { POP } from '@/store/Snackbar/constants'
+
 export default {
   name: 'GameCard',
   props: {
@@ -33,7 +38,23 @@ export default {
   },
   data: () => ({
     show: false
-  })
+  }),
+  computed: {
+    ...mapGetters({
+      configured: CONFIGURED
+    })
+  },
+  methods: {
+    ...mapMutations({
+      popSnackbar: POP
+    }),
+    play () {
+      if (!this.configured) {
+        this.popSnackbar({message: 'Configuration error', type: 'error'})
+        return
+      }
+    }
+  }
 }
 </script>
 
