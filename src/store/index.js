@@ -6,12 +6,14 @@ Vue.use(Vuex)
 import auth from './Auth'
 import settings from './Settings'
 import snackbar from './Snackbar'
+import hiragana from './Games/Hiragana'
 
 export default new Vuex.Store({
   modules: {
     auth,
     settings,
-    snackbar
+    snackbar,
+    hiragana
   },
   strict: true
 })
