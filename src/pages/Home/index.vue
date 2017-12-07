@@ -2,6 +2,16 @@
   v-container(fluid grid-list-md)
     v-layout(row wrap)
       v-flex(offset-lg1 lg10 sm12)
+        v-layout(row)
+          v-flex(xs12)
+            v-alert(color="error" icon="warning" :value="!configured" outline)
+              span
+                | The settings are not configured. Go to 
+                router-link(:to="routes.settings") settings
+                | 
+                | to fix this.
+            v-alert(color="warning" icon="priority_high" :value="configured && !fullySupported") Your browser doesn't support everything, time to upgrade? Also safari ain't no browser
+
         v-layout(row wrap)
           GameCard(v-for="game in games" 
             :key="game.title" 
@@ -11,7 +21,12 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
+import { SETTINGS } from '@/router/constants'
+import { CONFIGURED, FULLY_SUPPORTED } from '@/store/Settings/constants'
 import GameCard from './components/GameCard'
+
 export default {
   name: 'HomePage',
   data: () => ({
@@ -41,8 +56,19 @@ export default {
         subTitle: 'Learn to count stuff',
         description: 'Learn to count things in japanese. From english to japanese, by using characters or speech.'
       }
-    ]
+    ],
+    routes: {
+      settings: {
+        name: SETTINGS
+      }
+    }
   }),
+  computed: {
+    ...mapGetters({
+      configured: CONFIGURED,
+      fullySupported: FULLY_SUPPORTED
+    })
+  },
   components: {
     GameCard
   }
