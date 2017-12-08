@@ -57,9 +57,7 @@ export default {
       popSnackbar: POP
     }),
     playClicked () {
-      debugger
       if (!this.configured) {
-        debugger
         this.popSnackbar({message: 'Configuration error', type: 'error'})
         return
       }

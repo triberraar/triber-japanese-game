@@ -7,13 +7,23 @@ import auth from './Auth'
 import settings from './Settings'
 import snackbar from './Snackbar'
 import hiragana from './Games/Hiragana'
+import katakana from './Games/Katakana'
+import dates from './Games/Dates'
+import counters from './Games/Counters'
+import numbers from './Games/Numbers'
+import time from './Games/Time'
 
 export default new Vuex.Store({
   modules: {
     auth,
     settings,
     snackbar,
-    hiragana
+    hiragana,
+    katakana,
+    dates,
+    counters,
+    numbers,
+    time
   },
   strict: true
 })
