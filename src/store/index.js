@@ -12,6 +12,7 @@ import dates from './Games/Dates'
 import counters from './Games/Counters'
 import numbers from './Games/Numbers'
 import time from './Games/Time'
+import kana from './Games/Kana'
 
 export default new Vuex.Store({
   modules: {
@@ -23,7 +24,8 @@ export default new Vuex.Store({
     dates,
     counters,
     numbers,
-    time
+    time,
+    kana
   },
   strict: true
 })

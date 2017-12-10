@@ -32,7 +32,8 @@ NUMBERS,
 TIME,
 DATES,
 COUNTERS,
-PLAY
+PLAY,
+KANA
 } from '@/store/Games/constants'
 import { CONFIGURED, FULLY_SUPPORTED } from '@/store/Settings/constants'
 import { NAMESPACE as HIRAGANA_NAMESPACE } from '@/store/Games/Hiragana/constants'
@@ -41,6 +42,7 @@ import { NAMESPACE as DATES_NAMESPACE } from '@/store/Games/Dates/constants'
 import { NAMESPACE as TIME_NAMESPACE } from '@/store/Games/Time/constants'
 import { NAMESPACE as COUNTERS_NAMESPACE } from '@/store/Games/Counters/constants'
 import { NAMESPACE as NUMBERS_NAMESPACE } from '@/store/Games/Numbers/constants'
+import { NAMESPACE as KANA_NAMESPACE } from '@/store/Games/Kana/constants'
 import GameCard from './components/GameCard'
 
 export default {
@@ -71,6 +73,12 @@ export default {
           subTitle: 'Learn the characters',
           description: 'Learn the カタカナ characters by playing this game. From english to japanese or visa versa, by using sound or character.',
           play: this.playKatakana
+        }, {
+          id: KANA,
+          title: 'Kana',
+          subTitle: 'Learn the characters',
+          description: 'Learn the ひらがな & カタカナ characters by playing this game. From english to japanese or visa versa, by using sound or character.',
+          play: this.playKana
         }, {
           id: NUMBERS,
           title: 'Numbers',
@@ -117,6 +125,9 @@ export default {
     }),
     ...mapActions(NUMBERS_NAMESPACE, {
       playNumbers: PLAY
+    }),
+    ...mapActions(KANA_NAMESPACE, {
+      playKana: PLAY
     })
   },
   components: {
