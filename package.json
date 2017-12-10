@@ -12,6 +12,7 @@
     "lint:fix": "eslint --fix --ext .js,.vue src"
   },
   "dependencies": {
+    "animate.css": "^3.5.2",
     "firebase": "^4.6.2",
     "firebaseui": "^2.5.1",
     "mdi": "^2.0.46",

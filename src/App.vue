@@ -11,4 +11,5 @@
   }
 </script>
 
-<style src="../node_modules/mdi/css/materialdesignicons.css"></style>
+<style src="mdi/css/materialdesignicons.css"></style>
+<style src="animate.css/animate.css"></style>
