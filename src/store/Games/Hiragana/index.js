@@ -60,7 +60,7 @@ const mutations = {
       } else {
         gameMode = settings.gameMode
       }
-      state.currentGame.rounds.push({question: randomized[0], answers: randomized.slice(0, 12), gameMode})
+      state.currentGame.rounds.push({question: randomized[0], answers: randomize(randomized.slice(0, 12)), gameMode})
     }
     router.push({name: HIRAGANA_GAME_ROUND})
   },
