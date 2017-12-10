@@ -8,4 +8,8 @@ function randomize (array) {
   return array
 }
 
-export { randomize }
+function randomInt (max) {
+  Math.floor(Math.random() * (max))
+}
+
+export { randomize, randomInt }
