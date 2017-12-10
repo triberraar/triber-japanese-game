@@ -119,7 +119,7 @@ const getters = {
   },
   [HAS_BEEN_ATTEMPTED]: (state, getters) => attempt => {
     if (getters[CURRENT_ROUND]) {
-      return getters[CURRENT_ROUND].attemptedAnswers.find(it => it === attempt())
+      return getters[CURRENT_ROUND].attemptedAnswers.find(it => it === attempt)
     }
     return false
   }

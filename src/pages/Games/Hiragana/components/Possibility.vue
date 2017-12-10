@@ -27,8 +27,8 @@ export default {
     stylings () {
       console.log(this.possibility)
       return {
-        error: this.hasBeenAttempted(() => this.possibility),
-        flash: this.hasBeenAttempted(() => this.possibility)
+        error: this.hasBeenAttempted(this.possibility),
+        flash: this.hasBeenAttempted(this.possibility)
       }
     }
   },
