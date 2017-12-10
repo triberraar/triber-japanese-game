@@ -4,6 +4,7 @@ export const NUMBERS = 'Numbers'
 export const DATES = 'Dates'
 export const TIME = 'Time'
 export const COUNTERS = 'Counters'
+export const KANA = 'Kana'
 
 export const ENABLED = 'Enabled'
 export const PLAY = 'Play'
