@@ -5,10 +5,12 @@ import LoginPage from '@/pages/Login'
 import HomePage from '@/pages/Home'
 import SettingsPage from '@/pages/Settings'
 import HiraganaGamePage from '@/pages/Games/Hiragana'
+import HiraganaGameRoundPage from '@/pages/Games/Hiragana/Round'
 import { LOGIN,
   HOME,
   SETTINGS,
-  HIRAGANA_GAME
+  HIRAGANA_GAME,
+  HIRAGANA_GAME_ROUND
  } from './constants'
 
 import store from '@/store/index'
@@ -43,6 +45,13 @@ const router = new Router({
           path: 'hiragana',
           name: HIRAGANA_GAME,
           component: HiraganaGamePage,
+          meta: {
+            requiresAuth: true
+          }
+        }, {
+          path: 'round',
+          name: HIRAGANA_GAME_ROUND,
+          component: HiraganaGameRoundPage,
           meta: {
             requiresAuth: true
           }

@@ -6,10 +6,12 @@ import { ENABLED,
   CONTINUE,
   ONGOING
 } from '../constants'
+import { SYMBOLS } from './constants'
 import { POP } from '@/store/Snackbar/constants'
 
 import router from '@/router'
-import { HIRAGANA_GAME } from '@/router/constants'
+import { HIRAGANA_GAME, HIRAGANA_GAME_ROUND } from '@/router/constants'
+import { randomize } from '@/utils'
 
 const initial = {
   enabled: true,
@@ -19,7 +21,8 @@ const initial = {
   },
   currentGame: {
     ongoing: false,
-    round: null
+    round: null,
+    rounds: []
   }
 }
 
@@ -28,13 +31,20 @@ const mutations = {
     router.push({name: HIRAGANA_GAME})
   },
   [START]: (state, settings) => {
+    state.currentGame = {
+      ongoing: true,
+      round: 1,
+      rounds: []
+    }
     state.settings = {...state.settings, ...settings}
-    state.currentGame.ongoing = true
-    state.currentGame.round = 1
-    // go to rounds
+    for (let i = 0; i < settings.numberOfRounds; i++) {
+      const randomized = randomize(SYMBOLS)
+      state.currentGame.rounds.push({question: randomized[0], answers: randomized.slice(0, 12)})
+    }
+    router.push({name: HIRAGANA_GAME_ROUND})
   },
   [CONTINUE]: state => {
-    // go to rounds
+    router.push({name: HIRAGANA_GAME_ROUND})
   }
 }
 
