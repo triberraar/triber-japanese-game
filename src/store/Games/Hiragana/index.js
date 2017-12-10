@@ -3,12 +3,17 @@ import { ENABLED,
 } from '../constants'
 import { POP } from '@/store/Snackbar/constants'
 
+import router from '@/router'
+import { HIRAGANA_GAME } from '@/router/constants'
+
 const initial = {
-  enabled: false
+  enabled: true
 }
 
 const mutations = {
-
+  [PLAY]: () => {
+    router.push({name: HIRAGANA_GAME})
+  }
 }
 
 const actions = {

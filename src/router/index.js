@@ -4,7 +4,12 @@ import BaseLayout from '@/components/BaseLayout'
 import LoginPage from '@/pages/Login'
 import HomePage from '@/pages/Home'
 import SettingsPage from '@/pages/Settings'
-import { LOGIN, HOME, SETTINGS } from './constants'
+import HiraganaGamePage from '@/pages/Games/Hiragana'
+import { LOGIN,
+  HOME,
+  SETTINGS,
+  HIRAGANA_GAME
+ } from './constants'
 
 import store from '@/store/index'
 
@@ -31,6 +36,13 @@ const router = new Router({
           path: 'settings',
           name: SETTINGS,
           component: SettingsPage,
+          meta: {
+            requiresAuth: true
+          }
+        }, {
+          path: 'hiragana',
+          name: HIRAGANA_GAME,
+          component: HiraganaGamePage,
           meta: {
             requiresAuth: true
           }

@@ -1,3 +1,4 @@
-export const HOME = 'HOME'
-export const LOGIN = 'LOGIN'
-export const SETTINGS = 'SETTINGS'
+export const HOME = 'Home'
+export const LOGIN = 'Login'
+export const SETTINGS = 'Settings'
+export const HIRAGANA_GAME = 'HiraganaGame'
