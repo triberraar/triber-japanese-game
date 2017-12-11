@@ -34,20 +34,14 @@
 
 <script>
 import { mapGetters, mapMutations } from 'vuex'
-import { NAMESPACE } from '@/store/Games/Hiragana/constants'
+import { NAMESPACE, GAME_MODES } from '@/store/Games/Hiragana/constants'
 import { START, CONTINUE, ONGOING } from '@/store/Games/constants'
-import { HIRAGANA_TO_ROMAJI, SOUND_TO_HIRAGANA, ROMAJI_TO_HIRAGANA, RANDOM } from './constants'
 import { NUMBER_OF_ROUNDS } from '../constants'
 
 export default {
   name: 'HiraganaGamePage',
   data: () => ({
-    gameModes: [
-      { text: 'Hiragana to Romaji', value: HIRAGANA_TO_ROMAJI },
-      { text: 'Sound to Hiragana', value: SOUND_TO_HIRAGANA },
-      { text: 'Romaji to Hiragana', value: ROMAJI_TO_HIRAGANA },
-      { text: 'Random', value: RANDOM }
-    ],
+    gameModes: GAME_MODES,
     numberOfRoundsOptions: NUMBER_OF_ROUNDS,
     gameMode: null,
     numberOfRounds: null,

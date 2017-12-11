@@ -13,10 +13,8 @@ import { ENABLED,
   HAS_BEEN_ATTEMPTED
 } from '../constants'
 import { SYMBOLS,
-  HIRAGANA_TO_ROMAJI,
-  SOUND_TO_HIRAGANA,
-  ROMAJI_TO_HIRAGANA,
-  RANDOM
+  RANDOM,
+  GAME_MODES
  } from './constants'
 import { POP } from '@/store/Snackbar/constants'
 
@@ -51,19 +49,14 @@ const mutations = {
     for (let i = 0; i < settings.numberOfRounds; i++) {
       const randomized = randomize(SYMBOLS)
       let gameMode = null
-      if (settings.gameMode === RANDOM) {
-        const mode = randomInt(3)
-        if (mode === 0) {
-          gameMode = HIRAGANA_TO_ROMAJI
-        } else if (mode === 1) {
-          gameMode = SOUND_TO_HIRAGANA
-        } else if (mode === 2) {
-          gameMode = ROMAJI_TO_HIRAGANA
-        }
+      if (settings.gameMode.id === RANDOM) {
+        gameMode = GAME_MODES[randomInt(3)]
       } else {
         gameMode = settings.gameMode
       }
-      state.currentGame.rounds.push({question: randomized[0], answers: randomize(randomized.slice(0, 12)), gameMode, attempts: 0, attemptedAnswers: []})
+      const question = randomized[0]
+      const answers = randomize(randomized.slice(0, 12))
+      state.currentGame.rounds.push({question, answers, gameMode, attempts: 0, attemptedAnswers: []})
     }
     router.push({name: HIRAGANA_GAME_ROUND})
   },
@@ -71,9 +64,10 @@ const mutations = {
     router.push({name: HIRAGANA_GAME_ROUND})
   },
   [ANSWER]: (state, answer) => {
-    state.currentGame.rounds[state.currentGame.round - 1].attempts++
-    state.currentGame.rounds[state.currentGame.round - 1].attemptedAnswers.push(answer)
-    if (answer === state.currentGame.rounds[state.currentGame.round - 1].question.kana || answer === state.currentGame.rounds[state.currentGame.round - 1].question.romaji) {
+    const currentRound = state.currentGame.rounds[state.currentGame.round - 1]
+    currentRound.attempts++
+    currentRound.attemptedAnswers.push(answer)
+    if (answer === currentRound.question[currentRound.gameMode.answer]) {
       state.currentGame.round++
     }
   }
@@ -97,21 +91,11 @@ const getters = {
   [CURRENT_ROUND]: state => state.currentGame.rounds[state.currentGame.round - 1],
   [QUESTION]: (state, getters) => {
     if (!getters[CURRENT_ROUND]) return
-    if (getters[CURRENT_ROUND].gameMode === HIRAGANA_TO_ROMAJI || getters[CURRENT_ROUND].gameMode === SOUND_TO_HIRAGANA) {
-      return getters[CURRENT_ROUND].question.kana
-    } else {
-      return getters[CURRENT_ROUND].question.romaji
-    }
+    return getters[CURRENT_ROUND].question[getters[CURRENT_ROUND].gameMode.question]
   },
   [POSSIBILITIES]: (state, getters) => {
     if (!getters[CURRENT_ROUND]) return
-    return getters[CURRENT_ROUND].answers.map(it => {
-      if (getters[CURRENT_ROUND].gameMode === HIRAGANA_TO_ROMAJI) {
-        return it.romaji
-      } else {
-        return it.kana
-      }
-    })
+    return getters[CURRENT_ROUND].answers.map(it => it[getters[CURRENT_ROUND].gameMode.answer])
   },
   [ATTEMPTED_ANSWERS]: (state, getters) => {
     if (!getters[CURRENT_ROUND]) { return [] }
