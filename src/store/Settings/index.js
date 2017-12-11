@@ -3,7 +3,8 @@ import { SET_SETTINGS,
   CONFIGURED,
   VOICE_CONFIGURED,
   SPEECH_RECOGNITION_CONFIGURED,
-  FULLY_SUPPORTED
+  FULLY_SUPPORTED,
+  VOICE
 } from './constants'
 
 const initial = () => {
@@ -31,7 +32,8 @@ const getters = {
   [VOICE_CONFIGURED]: state => (state.voiceSupported === false) || (state.voiceSupported === true && state.voice),
   [SPEECH_RECOGNITION_CONFIGURED]: state => (state.speechRecognitionSupported === false) || (state.speechRecognitionSupported === true && state.speechRecognitionEnabled !== null),
   [CONFIGURED]: (state, getters) => getters[VOICE_CONFIGURED] && getters[SPEECH_RECOGNITION_CONFIGURED],
-  [FULLY_SUPPORTED]: state => state.speechRecognitionSupported && state.voiceSupported
+  [FULLY_SUPPORTED]: state => state.speechRecognitionSupported && state.voiceSupported,
+  [VOICE]: state => state.voice
 }
 
 export default {

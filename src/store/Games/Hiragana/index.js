@@ -10,7 +10,8 @@ import { ENABLED,
   POSSIBILITIES,
   ANSWER,
   ATTEMPTED_ANSWERS,
-  HAS_BEEN_ATTEMPTED
+  HAS_BEEN_ATTEMPTED,
+  CURRENT_ROUND_GAME_MODE
 } from '../constants'
 import { SYMBOLS,
   RANDOM,
@@ -106,6 +107,10 @@ const getters = {
       return getters[CURRENT_ROUND].attemptedAnswers.find(it => it === attempt)
     }
     return false
+  },
+  [CURRENT_ROUND_GAME_MODE]: (state, getters) => {
+    if (!getters[CURRENT_ROUND]) { return [] }
+    return getters[CURRENT_ROUND].gameMode.type
   }
 }
 
