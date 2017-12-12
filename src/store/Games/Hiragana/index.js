@@ -20,7 +20,7 @@ import { SYMBOLS,
 import { POP } from '@/store/Snackbar/constants'
 
 import router from '@/router'
-import { HIRAGANA_GAME, HIRAGANA_GAME_ROUND } from '@/router/constants'
+import { HIRAGANA_GAME, HIRAGANA_GAME_ROUND, HIRAGANA_GAME_RESULT } from '@/router/constants'
 import { randomize, randomInt } from '@/utils'
 
 const initial = {
@@ -70,6 +70,9 @@ const mutations = {
     currentRound.attemptedAnswers.push(answer)
     if (answer === currentRound.question[currentRound.gameMode.answer]) {
       state.currentGame.round++
+    }
+    if (state.currentGame.round > state.settings.numberOfRounds) {
+      router.push({name: HIRAGANA_GAME_RESULT})
     }
   }
 }

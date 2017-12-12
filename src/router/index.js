@@ -6,11 +6,13 @@ import HomePage from '@/pages/Home'
 import SettingsPage from '@/pages/Settings'
 import HiraganaGamePage from '@/pages/Games/Hiragana'
 import HiraganaGameRoundPage from '@/pages/Games/Hiragana/Round'
+import HiraganaGameResultPage from '@/pages/Games/Hiragana/Result'
 import { LOGIN,
   HOME,
   SETTINGS,
   HIRAGANA_GAME,
-  HIRAGANA_GAME_ROUND
+  HIRAGANA_GAME_ROUND,
+  HIRAGANA_GAME_RESULT
  } from './constants'
 
 import store from '@/store/index'
@@ -42,16 +44,23 @@ const router = new Router({
             requiresAuth: true
           }
         }, {
-          path: 'hiragana',
+          path: 'hiragana/config',
           name: HIRAGANA_GAME,
           component: HiraganaGamePage,
           meta: {
             requiresAuth: true
           }
         }, {
-          path: 'round',
+          path: 'hiragana/round',
           name: HIRAGANA_GAME_ROUND,
           component: HiraganaGameRoundPage,
+          meta: {
+            requiresAuth: true
+          }
+        }, {
+          path: 'hiragana/result',
+          name: HIRAGANA_GAME_RESULT,
+          component: HiraganaGameResultPage,
           meta: {
             requiresAuth: true
           }
