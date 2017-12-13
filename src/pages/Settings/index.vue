@@ -61,8 +61,7 @@ export default {
       this.setSettings({voiceSupported: this.voiceNames.length !== 0})
     }
     this.setSettings({
-      speechRecognitionSupported: !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia),
-      speechRecognitionEnabled: !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)
+      speechRecognitionSupported: !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)
     })
   },
   computed: {
