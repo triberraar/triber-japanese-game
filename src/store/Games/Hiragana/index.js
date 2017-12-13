@@ -11,7 +11,9 @@ import { ENABLED,
   ANSWER,
   ATTEMPTED_ANSWERS,
   HAS_BEEN_ATTEMPTED,
-  CURRENT_ROUND_GAME_MODE
+  CURRENT_ROUND_GAME_MODE,
+  RESULTS,
+  PROGRESS
 } from '../constants'
 import { SYMBOLS,
   RANDOM,
@@ -62,7 +64,11 @@ const mutations = {
     router.push({name: HIRAGANA_GAME_ROUND})
   },
   [CONTINUE]: state => {
-    router.push({name: HIRAGANA_GAME_ROUND})
+    if (state.currentGame.round > state.settings.numberOfRounds) {
+      router.push({name: HIRAGANA_GAME_RESULT})
+    } else {
+      router.push({name: HIRAGANA_GAME_ROUND})
+    }
   },
   [ANSWER]: (state, answer) => {
     const currentRound = state.currentGame.rounds[state.currentGame.round - 1]
@@ -114,6 +120,17 @@ const getters = {
   [CURRENT_ROUND_GAME_MODE]: (state, getters) => {
     if (!getters[CURRENT_ROUND]) { return [] }
     return getters[CURRENT_ROUND].gameMode.type
+  },
+  [RESULTS]: (state, getters) => {
+    return getters[CURRENT_GAME].rounds.map(it => {
+      const question = it.question[it.gameMode.question]
+      const answers = it.attemptedAnswers.join(', ')
+      const kana = it.question.Kana
+      return {question, answers, attempts: it.attempts, kana}
+    })
+  },
+  [PROGRESS]: (state, getters) => {
+    return ((getters[CURRENT_GAME].round - 1) / getters[SETTINGS].numberOfRounds) * 100
   }
 }
 

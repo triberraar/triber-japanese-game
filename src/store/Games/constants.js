@@ -20,6 +20,8 @@ export const POSSIBILITIES = 'Possibilities'
 export const ATTEMPTED_ANSWERS = 'attemptedAnswers'
 export const HAS_BEEN_ATTEMPTED = 'hasBeenAttempted'
 export const CURRENT_ROUND_GAME_MODE = 'currentRoundGameMode'
+export const RESULTS = 'Results'
+export const PROGRESS = 'Progess'
 // actions and mutations
 export const PLAY = 'Play'
 export const START = 'Start'

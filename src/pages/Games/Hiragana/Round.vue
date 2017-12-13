@@ -1,5 +1,6 @@
 <template lang="pug">
-  v-container(fluid grid-list-md)
+  v-container.pt-0.px-0(fluid grid-list-md)
+    v-progress-linear.mt-0(v-model="progress" color="info")
     Question(:question="question" :type="currentRoundGameMode")
     v-layout(row wrap)
       v-flex(lg4 offset-lg4)
@@ -13,7 +14,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import { NAMESPACE } from '@/store/Games/Hiragana/constants'
-import { CURRENT_ROUND, QUESTION, POSSIBILITIES, CURRENT_ROUND_GAME_MODE } from '@/store/Games/constants'
+import { QUESTION, POSSIBILITIES, CURRENT_ROUND_GAME_MODE, PROGRESS } from '@/store/Games/constants'
 import Question from './components/Question'
 import Possibility from './components/Possibility'
 
@@ -23,10 +24,10 @@ export default {
   }),
   computed: {
     ...mapGetters(NAMESPACE, {
-      currentRound: CURRENT_ROUND,
       question: QUESTION,
       possibilities: POSSIBILITIES,
-      currentRoundGameMode: CURRENT_ROUND_GAME_MODE
+      currentRoundGameMode: CURRENT_ROUND_GAME_MODE,
+      progress: PROGRESS
     })
   },
   methods: {
