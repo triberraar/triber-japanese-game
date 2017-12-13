@@ -13,7 +13,9 @@ import { ENABLED,
   HAS_BEEN_ATTEMPTED,
   CURRENT_ROUND_GAME_MODE,
   RESULTS,
-  PROGRESS
+  PROGRESS,
+  FINISHED,
+  FINISH
 } from '../constants'
 import { SYMBOLS,
   RANDOM,
@@ -32,7 +34,6 @@ const initial = {
     numberOfRounds: null
   },
   currentGame: {
-    ongoing: false,
     round: null,
     rounds: []
   }
@@ -44,7 +45,6 @@ const mutations = {
   },
   [START]: (state, settings) => {
     state.currentGame = {
-      ongoing: true,
       round: 1,
       rounds: []
     }
@@ -69,6 +69,9 @@ const mutations = {
     } else {
       router.push({name: HIRAGANA_GAME_ROUND})
     }
+  },
+  [FINISH]: state => {
+    router.push({name: HIRAGANA_GAME_RESULT})
   },
   [ANSWER]: (state, answer) => {
     const currentRound = state.currentGame.rounds[state.currentGame.round - 1]
@@ -97,7 +100,7 @@ const getters = {
   [ENABLED]: state => state.enabled,
   [SETTINGS]: state => state.settings,
   [CURRENT_GAME]: state => state.currentGame,
-  [ONGOING]: state => state.currentGame.ongoing,
+  [ONGOING]: (state, getters) => state.currentGame.round > 0 && !getters[FINISHED],
   [CURRENT_ROUND]: state => state.currentGame.rounds[state.currentGame.round - 1],
   [QUESTION]: (state, getters) => {
     if (!getters[CURRENT_ROUND]) return
@@ -131,6 +134,9 @@ const getters = {
   },
   [PROGRESS]: (state, getters) => {
     return ((getters[CURRENT_GAME].round - 1) / getters[SETTINGS].numberOfRounds) * 100
+  },
+  [FINISHED]: (state, getters) => {
+    return getters[CURRENT_GAME].round > getters[SETTINGS].numberOfRounds
   }
 }
 

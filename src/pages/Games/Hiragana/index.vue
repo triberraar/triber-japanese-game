@@ -8,6 +8,8 @@
           v-divider
           v-alert(:value='ongoing' color='info' outline) You already have a game ongoing, 
             v-btn.ma-0(@click="continueClicked" flat color="primary") continue?
+          v-alert(:value='finished' color='info' outline) You finished a game, 
+            v-btn.ma-0(@click="finishClicked" flat color="primary") score?
           v-card-text
             v-form(v-model="valid" ref="form" lazy-validation)
               v-layout(row wrap)
@@ -35,7 +37,7 @@
 <script>
 import { mapGetters, mapMutations } from 'vuex'
 import { NAMESPACE, GAME_MODES } from '@/store/Games/Hiragana/constants'
-import { START, CONTINUE, ONGOING } from '@/store/Games/constants'
+import { START, CONTINUE, ONGOING, FINISH, FINISHED } from '@/store/Games/constants'
 import { NUMBER_OF_ROUNDS } from '../constants'
 
 export default {
@@ -55,13 +57,15 @@ export default {
   }),
   computed: {
     ...mapGetters(NAMESPACE, {
-      ongoing: ONGOING
+      ongoing: ONGOING,
+      finished: FINISHED
     })
   },
   methods: {
     ...mapMutations(NAMESPACE, {
       start: START,
-      continue: CONTINUE
+      continue: CONTINUE,
+      finish: FINISH
     }),
     play () {
       if (this.$refs.form.validate()) {
@@ -70,6 +74,9 @@ export default {
     },
     continueClicked () {
       this.continue()
+    },
+    finishClicked () {
+      this.finish()
     }
   }
 }
