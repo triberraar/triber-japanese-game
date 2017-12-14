@@ -53,7 +53,7 @@ const mutations = {
       const randomized = randomize(SYMBOLS)
       let gameMode = null
       if (settings.gameMode.id === RANDOM) {
-        gameMode = GAME_MODES[randomInt(3)]
+        gameMode = GAME_MODES[randomInt(GAME_MODES.length - 1)]
       } else {
         gameMode = settings.gameMode
       }
