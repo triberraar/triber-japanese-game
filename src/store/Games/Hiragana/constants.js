@@ -1,7 +1,6 @@
-import { KANA, ROMAJI, TEXT, SOUND } from '../constants'
+import { KANA, ROMAJI, TEXT, SOUND, RANDOM } from '../constants'
 
 export const NAMESPACE = 'hiragana'
-export const RANDOM = 'Random'
 
 export const GAME_MODES = [
   { id: 'HiraganaToRomaji', text: 'Hiragana to Romaji', question: KANA, answer: ROMAJI, type: TEXT },

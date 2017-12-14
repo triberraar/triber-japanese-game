@@ -9,6 +9,7 @@ export const KANA = 'Kana'
 export const TEXT = 'Text'
 export const SOUND = 'Sound'
 export const ROMAJI = 'Romaji'
+export const RANDOM = 'Random'
 // getters
 export const ENABLED = 'Enabled'
 export const SETTINGS = 'Settings'
