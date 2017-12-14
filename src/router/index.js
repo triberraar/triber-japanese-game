@@ -7,12 +7,18 @@ import SettingsPage from '@/pages/Settings'
 import HiraganaGamePage from '@/pages/Games/Hiragana'
 import HiraganaGameRoundPage from '@/pages/Games/Hiragana/Round'
 import HiraganaGameResultPage from '@/pages/Games/Hiragana/Result'
+import KatakanaGamePage from '@/pages/Games/Katakana'
+import KatakanaGameRoundPage from '@/pages/Games/Katakana/Round'
+import KatakanaGameResultPage from '@/pages/Games/Katakana/Result'
 import { LOGIN,
   HOME,
   SETTINGS,
   HIRAGANA_GAME,
   HIRAGANA_GAME_ROUND,
-  HIRAGANA_GAME_RESULT
+  HIRAGANA_GAME_RESULT,
+  KATAKANA_GAME,
+  KATAKANA_GAME_ROUND,
+  KATAKANA_GAME_RESULT
  } from './constants'
 
 import store from '@/store/index'
@@ -61,6 +67,27 @@ const router = new Router({
           path: 'hiragana/result',
           name: HIRAGANA_GAME_RESULT,
           component: HiraganaGameResultPage,
+          meta: {
+            requiresAuth: true
+          }
+        }, {
+          path: 'katakana/config',
+          name: KATAKANA_GAME,
+          component: KatakanaGamePage,
+          meta: {
+            requiresAuth: true
+          }
+        }, {
+          path: 'katakana/round',
+          name: KATAKANA_GAME_ROUND,
+          component: KatakanaGameRoundPage,
+          meta: {
+            requiresAuth: true
+          }
+        }, {
+          path: 'katakana/result',
+          name: KATAKANA_GAME_RESULT,
+          component: KatakanaGameResultPage,
           meta: {
             requiresAuth: true
           }

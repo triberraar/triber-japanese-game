@@ -1,35 +1,27 @@
-import { ENABLED,
-  PLAY
-} from '../constants'
-import { POP } from '@/store/Snackbar/constants'
+import { SYMBOLS,
+  GAME_MODES
+ } from './constants'
+import { KATAKANA_GAME, KATAKANA_GAME_ROUND, KATAKANA_GAME_RESULT } from '@/router/constants'
+
+import { mutations, getters, actions } from '../mutal'
 
 const initial = {
-  enabled: false
-}
-
-const mutations = {
-
-}
-
-const actions = {
-  [PLAY]: ({ commit, state }) => {
-    if (state.enabled) {
-      commit(PLAY)
-    } else {
-      commit(POP, {message: 'Katakana game not enabled yet', type: 'error'}, {root: true})
-    }
+  enabled: true,
+  settings: {
+    gameMode: null,
+    numberOfRounds: null
+  },
+  currentGame: {
+    round: null,
+    rounds: []
   }
-}
-
-const getters = {
-  [ENABLED]: state => state.enabled
 }
 
 export default {
   state: initial,
-  actions,
-  mutations,
-  getters,
+  actions: actions(),
+  mutations: mutations(SYMBOLS, GAME_MODES, {start: KATAKANA_GAME, round: KATAKANA_GAME_ROUND, result: KATAKANA_GAME_RESULT}),
+  getters: getters(),
   strict: true,
   namespaced: true
 }

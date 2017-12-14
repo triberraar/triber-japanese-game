@@ -3,7 +3,7 @@ import { SYMBOLS,
  } from './constants'
 import { HIRAGANA_GAME, HIRAGANA_GAME_ROUND, HIRAGANA_GAME_RESULT } from '@/router/constants'
 
-import { mutations, getters, actions } from '../Kana'
+import { mutations, getters, actions } from '../mutal'
 
 const initial = {
   enabled: true,

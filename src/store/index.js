@@ -8,6 +8,7 @@ import settings from './Settings'
 import snackbar from './Snackbar'
 import hiragana from './Games/Hiragana'
 import katakana from './Games/Katakana'
+import kana from './Games/Kana'
 import dates from './Games/Dates'
 import counters from './Games/Counters'
 import numbers from './Games/Numbers'
@@ -23,7 +24,8 @@ export default new Vuex.Store({
     dates,
     counters,
     numbers,
-    time
+    time,
+    kana
   },
   strict: true
 })
