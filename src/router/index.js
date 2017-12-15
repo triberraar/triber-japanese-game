@@ -10,6 +10,9 @@ import HiraganaGameResultPage from '@/pages/Games/Hiragana/Result'
 import KatakanaGamePage from '@/pages/Games/Katakana'
 import KatakanaGameRoundPage from '@/pages/Games/Katakana/Round'
 import KatakanaGameResultPage from '@/pages/Games/Katakana/Result'
+import KanaGamePage from '@/pages/Games/Kana'
+import KanaGameRoundPage from '@/pages/Games/Kana/Round'
+import KanaGameResultPage from '@/pages/Games/Kana/Result'
 import { LOGIN,
   HOME,
   SETTINGS,
@@ -18,7 +21,10 @@ import { LOGIN,
   HIRAGANA_GAME_RESULT,
   KATAKANA_GAME,
   KATAKANA_GAME_ROUND,
-  KATAKANA_GAME_RESULT
+  KATAKANA_GAME_RESULT,
+  KANA_GAME,
+  KANA_GAME_ROUND,
+  KANA_GAME_RESULT
  } from './constants'
 
 import store from '@/store/index'
@@ -88,6 +94,27 @@ const router = new Router({
           path: 'katakana/result',
           name: KATAKANA_GAME_RESULT,
           component: KatakanaGameResultPage,
+          meta: {
+            requiresAuth: true
+          }
+        }, {
+          path: 'kana/config',
+          name: KANA_GAME,
+          component: KanaGamePage,
+          meta: {
+            requiresAuth: true
+          }
+        }, {
+          path: 'kana/round',
+          name: KANA_GAME_ROUND,
+          component: KanaGameRoundPage,
+          meta: {
+            requiresAuth: true
+          }
+        }, {
+          path: 'kana/result',
+          name: KANA_GAME_RESULT,
+          component: KanaGameResultPage,
           meta: {
             requiresAuth: true
           }

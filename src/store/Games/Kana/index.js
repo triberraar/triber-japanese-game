@@ -1,35 +1,27 @@
-import { ENABLED,
-  PLAY
-} from '../constants'
-import { POP } from '@/store/Snackbar/constants'
+import { SYMBOLS,
+  GAME_MODES
+ } from './constants'
+import { KANA_GAME, KANA_GAME_ROUND, KANA_GAME_RESULT } from '@/router/constants'
+
+import { mutations, getters, actions } from '../mutal'
 
 const initial = {
-  enabled: false
-}
-
-const mutations = {
-
-}
-
-const actions = {
-  [PLAY]: ({ commit, state }) => {
-    if (state.enabled) {
-      commit(PLAY)
-    } else {
-      commit(POP, {message: 'Kana game not enabled yet', type: 'error'}, {root: true})
-    }
+  enabled: true,
+  settings: {
+    gameMode: null,
+    numberOfRounds: null
+  },
+  currentGame: {
+    round: null,
+    rounds: []
   }
-}
-
-const getters = {
-  [ENABLED]: state => state.enabled
 }
 
 export default {
   state: initial,
-  actions,
-  mutations,
-  getters,
+  actions: actions(),
+  mutations: mutations(SYMBOLS, GAME_MODES, {start: KANA_GAME, round: KANA_GAME_ROUND, result: KANA_GAME_RESULT}),
+  getters: getters(),
   strict: true,
   namespaced: true
 }
