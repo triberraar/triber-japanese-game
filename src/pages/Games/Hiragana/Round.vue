@@ -7,16 +7,20 @@
         v-layout()
           v-flex(xs12)
             v-layout(row wrap)
-              Possibility(v-for="(item, index) in possibilities" :key="index" :possibility="item")
+              Possibility(v-for="(item, index) in possibilities" 
+                :key="index" 
+                :possibility="item" 
+                :answer="answer" 
+                :hasBeenAttempted="hasBeenAttempted")
               
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 import { NAMESPACE } from '@/store/Games/Hiragana/constants'
-import { QUESTION, POSSIBILITIES, CURRENT_ROUND_GAME_MODE, PROGRESS } from '@/store/Games/constants'
-import Question from './components/Question'
-import Possibility from './components/Possibility'
+import { QUESTION, POSSIBILITIES, CURRENT_ROUND_GAME_MODE, PROGRESS, HAS_BEEN_ATTEMPTED, ANSWER } from '@/store/Games/constants'
+import Question from '@/components/Games/Question'
+import Possibility from '@/components/Games/Possibility'
 
 export default {
   name: 'HiraganaGameRoundPage',
@@ -27,10 +31,14 @@ export default {
       question: QUESTION,
       possibilities: POSSIBILITIES,
       currentRoundGameMode: CURRENT_ROUND_GAME_MODE,
-      progress: PROGRESS
+      progress: PROGRESS,
+      hasBeenAttempted: HAS_BEEN_ATTEMPTED
     })
   },
   methods: {
+    ...mapMutations(NAMESPACE, {
+      answer: ANSWER
+    })
   },
   components: {
     Question,

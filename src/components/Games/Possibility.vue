@@ -6,24 +6,25 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex'
-import { NAMESPACE } from '@/store/Games/Katakana/constants'
-import { ANSWER, HAS_BEEN_ATTEMPTED } from '@/store/Games/constants'
-
 export default {
-  name: 'KatakanaGameRoundPossibility',
+  name: 'HiraganaGameRoundPossibility',
   props: {
     possibility: {
       required: true,
       type: String
+    },
+    answer: {
+      required: true,
+      type: Function
+    },
+    hasBeenAttempted: {
+      required: true,
+      type: Function
     }
   },
   data: () => ({
   }),
   computed: {
-    ...mapGetters(NAMESPACE, {
-      hasBeenAttempted: HAS_BEEN_ATTEMPTED
-    }),
     stylings () {
       return {
         error: this.hasBeenAttempted(this.possibility),
@@ -32,9 +33,6 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(NAMESPACE, {
-      answer: ANSWER
-    }),
     answerClicked () {
       this.answer(this.possibility)
     }
