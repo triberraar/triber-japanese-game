@@ -1,26 +1,20 @@
 <template lang="pug">
-  v-container.pt-0.px-0(fluid grid-list-md)
-    v-progress-linear.mt-0(v-model="progress" color="info")
-    Question(:question="question" :type="currentRoundGameMode")
-    v-layout(row wrap)
-      v-flex(lg4 offset-lg4)
-        v-layout()
-          v-flex(xs12)
-            v-layout(row wrap)
-              Possibility(v-for="(item, index) in possibilities" 
-                :key="index" 
-                :possibility="item"
-                :answer="answer"
-                :hasBeenAttempted="hasBeenAttempted")
+  Round(
+    :question="question"
+    :possibilities="possibilities"
+    :currentRoundGameMode="currentRoundGameMode"
+    :progress="progress"
+    :hasBeenAttempted="hasBeenAttempted"
+    :answer="answer"
+  )
               
 </template>
 
 <script>
 import { mapGetters, mapMutations } from 'vuex'
 import { NAMESPACE } from '@/store/Games/Katakana/constants'
-import { QUESTION, POSSIBILITIES, CURRENT_ROUND_GAME_MODE, PROGRESS, ANSWER, HAS_BEEN_ATTEMPTED } from '@/store/Games/constants'
-import Question from '@/components/Games/Question'
-import Possibility from '@/components/Games/Possibility'
+import { QUESTION, POSSIBILITIES, CURRENT_ROUND_GAME_MODE, PROGRESS, HAS_BEEN_ATTEMPTED, ANSWER } from '@/store/Games/constants'
+import Round from '@/components/Games/Round'
 
 export default {
   name: 'KatakanaGameRoundPage',
@@ -41,8 +35,7 @@ export default {
     })
   },
   components: {
-    Question,
-    Possibility
+    Round
   }
 }
 </script>

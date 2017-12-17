@@ -22,8 +22,6 @@ export default {
       type: Function
     }
   },
-  data: () => ({
-  }),
   computed: {
     stylings () {
       return {

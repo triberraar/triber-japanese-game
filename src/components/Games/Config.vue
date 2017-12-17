@@ -79,8 +79,6 @@ export default {
     ],
     valid: true
   }),
-  computed: {
-  },
   methods: {
     play () {
       if (this.$refs.form.validate()) {
