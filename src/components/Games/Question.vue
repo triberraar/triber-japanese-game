@@ -2,7 +2,7 @@
   v-layout()
     v-flex(lg4 offset-lg4)
       v-layout
-        v-flex(sm4 md2 offset-sm5)
+        v-flex(sm4 lg4 xl2 offset-sm5 offset-lg4 offset-xl5)
           v-card.mt-1.mb-1.text-xs-center(dark)
             v-card-text(style="height: 67px; cursor: pointer;" v-if="type === text")
               div.headline {{question}}
@@ -18,7 +18,7 @@ import { VOICE } from '@/store/Settings/constants'
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'HiraganaGameRoundQuestion',
+  name: 'GameRoundQuestion',
   mixins: [speaker],
   props: {
     question: {

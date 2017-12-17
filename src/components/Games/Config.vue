@@ -4,7 +4,7 @@
       v-flex(xs12)
         v-card()
           v-card-title(primary-title)
-            h3.headline.mb-0 Katakana Game
+            h3.headline.mb-0 {{title}}
           v-divider
           v-alert(:value='ongoing' color='info' outline) You already have a game ongoing, 
             v-btn.ma-0(@click="continueClicked" flat color="primary") continue?
@@ -35,16 +35,40 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex'
-import { NAMESPACE, GAME_MODES } from '@/store/Games/Katakana/constants'
-import { START, CONTINUE, ONGOING, FINISH, FINISHED } from '@/store/Games/constants'
-import { NUMBER_OF_ROUNDS } from '../constants'
-
 export default {
-  name: 'KatakanaGamePage',
+  name: 'ConfigGamePage',
+  props: {
+    title: {
+      required: true,
+      type: String
+    },
+    gameModes: {
+      required: true,
+      type: Array
+    },
+    ongoing: {
+      required: true,
+      type: Boolean
+    },
+    finished: {
+      required: true,
+      type: Boolean
+    },
+    start: {
+      required: true,
+      type: Function
+    },
+    continue: {
+      required: true,
+      type: Function
+    },
+    finish: {
+      required: true,
+      type: Function
+    }
+  },
   data: () => ({
-    gameModes: GAME_MODES,
-    numberOfRoundsOptions: NUMBER_OF_ROUNDS,
+    numberOfRoundsOptions: [ 5, 10, 15, 25 ],
     gameMode: null,
     numberOfRounds: null,
     gameModeRules: [
@@ -56,17 +80,8 @@ export default {
     valid: true
   }),
   computed: {
-    ...mapGetters(NAMESPACE, {
-      ongoing: ONGOING,
-      finished: FINISHED
-    })
   },
   methods: {
-    ...mapMutations(NAMESPACE, {
-      start: START,
-      continue: CONTINUE,
-      finish: FINISH
-    }),
     play () {
       if (this.$refs.form.validate()) {
         this.start({gameMode: this.gameMode, numberOfRounds: this.numberOfRounds})

@@ -4,25 +4,25 @@ import BaseLayout from '@/components/BaseLayout'
 import LoginPage from '@/pages/Login'
 import HomePage from '@/pages/Home'
 import SettingsPage from '@/pages/Settings'
-import HiraganaGamePage from '@/pages/Games/Hiragana'
+import HiraganaGameConfigPage from '@/pages/Games/Hiragana/Config'
 import HiraganaGameRoundPage from '@/pages/Games/Hiragana/Round'
 import HiraganaGameResultPage from '@/pages/Games/Hiragana/Result'
-import KatakanaGamePage from '@/pages/Games/Katakana'
+import KatakanaGameConfigPage from '@/pages/Games/Katakana/Config'
 import KatakanaGameRoundPage from '@/pages/Games/Katakana/Round'
 import KatakanaGameResultPage from '@/pages/Games/Katakana/Result'
-import KanaGamePage from '@/pages/Games/Kana'
+import KanaGameConfigPage from '@/pages/Games/Kana/Config'
 import KanaGameRoundPage from '@/pages/Games/Kana/Round'
 import KanaGameResultPage from '@/pages/Games/Kana/Result'
 import { LOGIN,
   HOME,
   SETTINGS,
-  HIRAGANA_GAME,
+  HIRAGANA_GAME_CONFIG,
   HIRAGANA_GAME_ROUND,
   HIRAGANA_GAME_RESULT,
-  KATAKANA_GAME,
+  KATAKANA_GAME_CONFIG,
   KATAKANA_GAME_ROUND,
   KATAKANA_GAME_RESULT,
-  KANA_GAME,
+  KANA_GAME_CONFIG,
   KANA_GAME_ROUND,
   KANA_GAME_RESULT
  } from './constants'
@@ -57,8 +57,8 @@ const router = new Router({
           }
         }, {
           path: 'hiragana/config',
-          name: HIRAGANA_GAME,
-          component: HiraganaGamePage,
+          name: HIRAGANA_GAME_CONFIG,
+          component: HiraganaGameConfigPage,
           meta: {
             requiresAuth: true
           }
@@ -78,8 +78,8 @@ const router = new Router({
           }
         }, {
           path: 'katakana/config',
-          name: KATAKANA_GAME,
-          component: KatakanaGamePage,
+          name: KATAKANA_GAME_CONFIG,
+          component: KatakanaGameConfigPage,
           meta: {
             requiresAuth: true
           }
@@ -99,8 +99,8 @@ const router = new Router({
           }
         }, {
           path: 'kana/config',
-          name: KANA_GAME,
-          component: KanaGamePage,
+          name: KANA_GAME_CONFIG,
+          component: KanaGameConfigPage,
           meta: {
             requiresAuth: true
           }

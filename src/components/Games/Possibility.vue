@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'HiraganaGameRoundPossibility',
+  name: 'GameRoundPossibility',
   props: {
     possibility: {
       required: true,
