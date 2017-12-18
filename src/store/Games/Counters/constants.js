@@ -1,4 +1,4 @@
-import { ENGLISH, JAPANESE, TEXT, SOUND, SPEAK, RANDOM } from '../constants'
+import { ENGLISH, JAPANESE, TEXT, SOUND, RANDOM } from '../constants'
 
 export const NAMESPACE = 'counters'
 
@@ -6,7 +6,7 @@ export const GAME_MODES = [
   {id: 'JapaneseToEnglish', text: 'Japanese to English', question: JAPANESE, answer: ENGLISH, type: TEXT},
   {id: 'EnglishToJapanese', text: 'English to Japanese', question: ENGLISH, answer: JAPANESE, type: TEXT},
   {id: 'SoundToEnglish', text: 'Sound to English', question: JAPANESE, answer: ENGLISH, type: SOUND},
-  { id: RANDOM, text: 'Random' }
+  {id: RANDOM, text: 'Random'}
 ]
 
 export const GENERIC = 'Generic'
