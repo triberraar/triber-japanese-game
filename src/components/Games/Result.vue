@@ -2,7 +2,7 @@
   v-container.pt-0.px-0(fluid grid-list-md)
     v-progress-linear.mt-0(v-model="progress" color="info")
     v-layout
-      v-flex(lg4 offset-lg4)
+      v-flex(xs12 md8 offset-md2 lg6 offset-lg3 )
         v-card()
           v-card-title(primary-title)
             div.headline Your results
