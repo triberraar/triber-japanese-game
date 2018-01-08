@@ -124,8 +124,6 @@ export const getters = () => {
     [PROGRESS]: (state, getters) => {
       return ((getters[CURRENT_GAME].round - 1) / getters[SETTINGS].numberOfRounds) * 100
     },
-    [FINISHED]: (state, getters) => {
-      return getters[CURRENT_GAME].round > getters[SETTINGS].numberOfRounds
-    }
+    [FINISHED]: (state, getters) => getters[CURRENT_GAME].round > getters[SETTINGS].numberOfRounds
   }
 }

@@ -13,6 +13,9 @@ import KatakanaGameResultPage from '@/pages/Games/Katakana/Result'
 import KanaGameConfigPage from '@/pages/Games/Kana/Config'
 import KanaGameRoundPage from '@/pages/Games/Kana/Round'
 import KanaGameResultPage from '@/pages/Games/Kana/Result'
+import CountersGameConfigPage from '@/pages/Games/Counters/Config'
+import CountersGameRoundPage from '@/pages/Games/Counters/Round'
+import CountersGameResultPage from '@/pages/Games/Counters/Result'
 import { LOGIN,
   HOME,
   SETTINGS,
@@ -24,7 +27,10 @@ import { LOGIN,
   KATAKANA_GAME_RESULT,
   KANA_GAME_CONFIG,
   KANA_GAME_ROUND,
-  KANA_GAME_RESULT
+  KANA_GAME_RESULT,
+  COUNTERS_GAME_CONFIG,
+  COUNTERS_GAME_ROUND,
+  COUNTERS_GAME_RESULT
  } from './constants'
 
 import store from '@/store/index'
@@ -115,6 +121,27 @@ const router = new Router({
           path: 'kana/result',
           name: KANA_GAME_RESULT,
           component: KanaGameResultPage,
+          meta: {
+            requiresAuth: true
+          }
+        }, {
+          path: 'counters/config',
+          name: COUNTERS_GAME_CONFIG,
+          component: CountersGameConfigPage,
+          meta: {
+            requiresAuth: true
+          }
+        }, {
+          path: 'counters/round',
+          name: COUNTERS_GAME_ROUND,
+          component: CountersGameRoundPage,
+          meta: {
+            requiresAuth: true
+          }
+        }, {
+          path: 'counters/result',
+          name: COUNTERS_GAME_RESULT,
+          component: CountersGameResultPage,
           meta: {
             requiresAuth: true
           }

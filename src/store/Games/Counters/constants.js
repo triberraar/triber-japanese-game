@@ -14,13 +14,6 @@ export const LONG = 'Long'
 export const ROUND = 'Round'
 export const FLAT = 'Flat'
 
-export const COUNTERS = [
-  {id: GENERIC, text: 'Generic objects (いくつ)', symbols: GENERIC_SYMBOLS},
-  {id: LONG, text: 'Long objects (なんぼん)', symbols: LONG_SYMBOLS},
-  {id: ROUND, text: 'Round objects (なんこ)', symbols: ROUND_SYMBOLS},
-  {id: FLAT, text: 'Flat objects (なんまい)', symbols: FLAT_SYMBOLS}
-]
-
 export const GENERIC_SYMBOLS = [
   {JAPANESE: 'ひとつ', ENGLISH: '1 (generic)', value: 1, type: GENERIC},
   {JAPANESE: 'ふたつ', ENGLISH: '2 (generic)', value: 2, type: GENERIC},
@@ -111,4 +104,11 @@ export const FLAT_SYMBOLS = [
   {JAPANESE: 'じゅうはちまい', ENGLISH: '18 (flat)', value: 18, type: FLAT},
   {JAPANESE: 'じゅうきゅうまい', ENGLISH: '19 (flat)', value: 19, type: FLAT},
   {JAPANESE: 'にじゅうまい', ENGLISH: '20 (flat)', value: 20, type: FLAT}
+]
+
+export const COUNTERS = [
+  {id: GENERIC, text: 'Generic objects (いくつ)', symbols: GENERIC_SYMBOLS},
+  {id: LONG, text: 'Long objects (なんぼん)', symbols: LONG_SYMBOLS},
+  {id: ROUND, text: 'Round objects (なんこ)', symbols: ROUND_SYMBOLS},
+  {id: FLAT, text: 'Flat objects (なんまい)', symbols: FLAT_SYMBOLS}
 ]
